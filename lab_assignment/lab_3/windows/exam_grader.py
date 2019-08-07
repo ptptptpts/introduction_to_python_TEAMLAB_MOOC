@@ -17,14 +17,13 @@ def get_number_of_subjects():
     # """
     #
     # ===Modify codes below=================
-    number_of_subjects = None
+    number_of_subjects = int(input("과목수를 입력하세요: "))
     # ======================================
     return number_of_subjects
 
 
 # Help Funtion - 수정하지 말 것
 def sum_of_scores(number_of_subjects):
-
     total_score = 0
     for i in range(number_of_subjects):
         message = str(i + 1) + "번째 과목의 점수를 입력하세요 : "
@@ -49,6 +48,8 @@ def print_exam_grader(average_score):
     print("평균 점수: ", average_score)
     print("학     점: ", grade)
 
+def get_average_score(total_score, number_of_subjects):
+    return float(total_score) / float(number_of_subjects)
 
 def main():
     print("Start of Exam Grader Program")
