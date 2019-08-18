@@ -20,8 +20,9 @@ def sum_of_list(list_data):
     # 한 줄 이상의 코드로 작성 가능하나,
     # 반드시 결과 값을 result 변수에 할당하여 반환
 
-    result = None
-
+    result = 0
+    for value in list_data:
+        result += value
     # ==================================
     return result
 
@@ -51,7 +52,8 @@ def merge_and_sort(list_data_a, list_data_b):
     # 한 줄 이상의 코드로 작성 가능하나,
     # 반드시 결과 값을 result 변수에 할당하여 반환
 
-    result = None
+    result = list_data_a + list_data_b
+    result.sort()
 
     # ==================================
     return result
@@ -82,7 +84,11 @@ def delete_a_list_element(list_data, element_value):
     # 한 줄 이상의 코드로 작성 가능하나,
     # 반드시 결과 값을 result 변수에 할당하여 반환
 
-    result = None
+    result = 0
+
+    if list_data.count(element_value) > 0:
+        list_data.remove(element_value)
+        result = list_data
 
     # ==================================
     return result
@@ -111,7 +117,10 @@ def comparison_list_size(list_data_a, list_data_b):
     # 반드시 결과 값을 result 변수에 할당하여 반환
 
     result = None
-
+    if len(list_data_b) > len(list_data_a) :
+        result = list_data_b
+    else:
+        result = list_data_a
     # ==================================
     return result
 
@@ -138,6 +147,11 @@ def odd_even_check(a, b):
     # 반드시 결과 값을 result 변수에 할당하여 반환
 
     result = None
+    c = a + b
+    if c % 2 == 1:
+        result = "Odd"
+    else:
+        result = "Even"
 
     # ==================================
     return result
@@ -163,6 +177,10 @@ def discount_price(price):
     # 반드시 결과 값을 result 변수에 할당하여 반환
 
     result = None
+    if price < 100000:
+        result = float(price) * 0.9
+    else:
+        result = float(price) * 0.8
 
     # ==================================
     return result
@@ -188,7 +206,10 @@ def find_smallest_value(list_data):
     # 한 줄 이상의 코드로 작성 가능하나,
     # 반드시 결과 값을 result 변수에 할당하여 반환
 
-    result = None
+    result = list_data[0]
+    for n in list_data :
+        if result > n :
+            result = n
 
     # ==================================
     return result
@@ -212,7 +233,10 @@ def binary_converter(decimal_number):
     # 한 줄 이상의 코드로 작성 가능하나,
     # 반드시 결과 값을 result 변수에 할당하여 반환
 
-    result = None
+    result = ""
+    while decimal_number > 0 :
+        result = str(decimal_number % 2) + result
+        decimal_number = decimal_number // 2
 
     # ==================================
     return result.strip()
@@ -244,7 +268,16 @@ def number_of_cases(list_data):
     # 한 줄 이상의 코드로 작성 가능하나,
     # 반드시 결과 값을 result 변수에 할당하여 반환
 
-    result = None
+    result = []
+
+    for ch1 in list_data :
+        ch1 = str(ch1)
+        for ch2 in list_data :
+            ch2 = ch1 + str(ch2)
+            if result.count(ch2) == 0 :
+                result.append(ch2)
+
+    result.sort()
 
     # ==================================
     return result
@@ -254,9 +287,10 @@ def main():
     # ===Test your functions=============
     # 아래 "pass" 부분을 삭제한 후 테스트하고
     # 싶은 코드를 자유롭게 작성하시오
-    pass
+    print(number_of_cases(['a','a','c']))
 
     # ==================================
+
 
 if __name__ == "__main__":
     main()
