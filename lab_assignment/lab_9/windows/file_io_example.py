@@ -11,8 +11,8 @@ def get_file_contents(filename):
     # >>> fie.get_file_contents("1984.txt").split("\n")[0]
     # GEORGE ORWELL
     # ===Modify codes below=============
-    contents = None
-
+    fp = open(filename, "r", encoding='UTF8')
+    contents = fp.read()
     # ==================================
     return contents
 
@@ -27,8 +27,7 @@ def get_number_of_characters_with_blank(filename):
     # >>> fie.get_number_of_characters_with_blank("1984.txt")
     # 558841
     # ===Modify codes below=============
-    result = None
-
+    result = len(get_file_contents(filename))
     # ==================================
     return result
 
@@ -44,7 +43,10 @@ def get_number_of_characters_without_blank(filename):
     # >>> fie.get_number_of_characters_without_blank("1984.txt")
     # 459038
     # ===Modify codes below=============
-    result = None
+    result = get_number_of_characters_with_blank(filename) \
+             - get_number_of_target_words(filename, " ") \
+             - get_number_of_target_words(filename, "\t") \
+             - get_number_of_target_words(filename, "\n")
 
     # ==================================
     return result
@@ -61,10 +63,10 @@ def get_number_of_lines(filename):
     # >>> fie.get_number_of_lines("1984.txt")
     # 1414
     # ===Modify codes below=============
-    result = None
+    result = len(get_file_contents(filename).split("\n")) - 1
 
     # ==================================
-    return None
+    return result
 
 def get_number_of_target_words(filename, target_words):
     # '''
@@ -82,7 +84,12 @@ def get_number_of_target_words(filename, target_words):
     # >>> fie.get_number_of_words("1984.txt", "and")
     # 2750
     # ===Modify codes below=============
-    result = None
-
+    result = get_file_contents(filename).lower().count(target_words.lower())
     # ==================================
     return result
+
+print(get_file_contents("1984.txt").split("\n")[0])
+print(get_number_of_characters_with_blank("1984.txt"))
+print(get_number_of_characters_without_blank("1984.txt"))
+print(get_number_of_lines("1984.txt"))
+print(get_number_of_target_words("1984.txt", "Hi"))
